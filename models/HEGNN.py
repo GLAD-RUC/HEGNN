@@ -21,9 +21,9 @@ class BaseMLP(nn.Module):
     def forward(self, x):
         return x + self.mlp(x) if self.residual else self.mlp(x)
 
-class EGNN_Layer(nn.Module):
+class HEGNN_Layer(nn.Module):
     def __init__(self, edge_attr_dim, hidden_dim, sh_irreps, activation=nn.SiLU()):
-        super(EGNN_Layer, self).__init__()
+        super(HEGNN_Layer, self).__init__()
         self.sh_irreps = sh_irreps
         MLP = partial(BaseMLP, hidden_dim=hidden_dim, activation=activation)
         self.mlp_msg = MLP(input_dim=2 * hidden_dim + edge_attr_dim + 1 + sh_irreps.lmax + 1, output_dim=hidden_dim, last_act=True)
@@ -133,7 +133,7 @@ class HEGNN(nn.Module):
 
         self.layers = nn.ModuleList()
         for _ in range(self.num_layer):
-            layer = EGNN_Layer(edge_attr_dim, hidden_dim, self.sh_init.sh_irreps, activation=activation)
+            layer = HEGNN_Layer(edge_attr_dim, hidden_dim, self.sh_init.sh_irreps, activation=activation)
             self.layers.append(layer)
 
         self.to(device)        
