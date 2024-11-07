@@ -4,7 +4,7 @@ Jiacheng Cen, Anyi Li, Ning Lin, Yuxiang Ren, Zihe Wang, Wenbing Huang
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/GLAD-RUC/HEGNN/blob/main/LICENSE)
 
-[**[OpenReview]**](https://openreview.net/forum?id=M0ncNVuGYN) [**[paper]**](https://openreview.net/pdf?id=M0ncNVuGYN) [**[poster]**](https://neurips.cc/virtual/2024/poster/95552)
+[**[OpenReview]**](https://openreview.net/forum?id=M0ncNVuGYN) [**[paper]**](https://openreview.net/pdf?id=M0ncNVuGYN) [**[poster]**](https://neurips.cc/virtual/2024/poster/95552) [**[arXiv]**](https://arxiv.org/abs/2410.11443)
 
 ![](./assets/HEGNN-teaser.jpg)
 Common symmetric graphs. Equivariant GNNs on symmetric graphs will degenerate to a zero function if the degree of their representations is fixed as 1.
