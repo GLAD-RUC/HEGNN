@@ -39,7 +39,7 @@ The `/expressivity` directory contains the notebooks with `rot-3D-test.ipynb` an
 To generate datasets containing multiple isolated particles, please use the following command.
 
 ```bash
-python -u ./dataset/nbody/datagen/generate_dataset.py --num-train 5000 --seed 43 --n_isolated 100 --n_stick 0 --n_hinge 0 --n_workers 50
+python -u ./datasets/nbody/datagen/generate_dataset.py --num-train 5000 --seed 43 --n_isolated 5 --n_stick 0 --n_hinge 0 --n_workers 50
 ```
 
 #### Run Experiments

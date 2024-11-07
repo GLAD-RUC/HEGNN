@@ -46,9 +46,9 @@ class NBodySystemDataset(Dataset):
         vel = np.load(f'{self.data_dir}/vel_{self.suffix}.npy')
         charges = np.load(f'{self.data_dir}/charges_{self.suffix}.npy')
         edges = np.load(f'{self.data_dir}/edges_{self.suffix}.npy')
-        # with open(f'{self.data_dir}/cfg_{self.suffix}.pkl', 'rb') as f:
-        #     cfg = pkl.load(f)
-        cfg=None
+        with open(f'{self.data_dir}/cfg_{self.suffix}.pkl', 'rb') as f:
+            cfg = pkl.load(f)
+
         self.num_node_r = loc.shape[-2]
         return loc, vel, edges, charges, cfg
     
@@ -63,11 +63,6 @@ class NBodySystemDataset(Dataset):
 
         loc_0, loc_t = loc[:, self.frame_0, :, :], loc[:, self.frame_T, :, :]  # [num_systems, num_node_r, 3]
         vel_0, vel_t = vel[:, self.frame_0, :, :], vel[:, self.frame_T, :, :]  # [num_systems, num_node_r, 3]
-
-        loc_0 = torch.transpose(loc_0, 1, 2)
-        loc_t = torch.transpose(loc_t, 1, 2)
-        vel_0 = torch.transpose(vel_0, 1, 2)
-        vel_t = torch.transpose(vel_t, 1, 2)
 
         num_systems, num_node_r, _ = charges.size()
         loc_0, loc_t, vel_0, charges = loc_0.to(device), loc_t.to(device), vel_0.to(device), charges.to(device)
@@ -95,9 +90,6 @@ class NBodySystemDataset(Dataset):
         # Node Feat
         feat_node_velocity = torch.sqrt(torch.sum(vel_0 ** 2, dim=1)).unsqueeze(1)
         feat_node_charge = charges
-        # print(loc_0.shape)
-        # print(feat_node_velocity.shape)
-        # print(feat_node_charge.shape)
         node_feat = torch.cat([feat_node_velocity, feat_node_charge / feat_node_charge.max()], dim=1)
 
         # Virtual node loc = mean
