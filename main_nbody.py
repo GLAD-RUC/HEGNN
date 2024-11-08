@@ -32,7 +32,7 @@ parser.add_argument('--dim_hidden', type=int, default=64, help='hiddendim (defau
 parser.add_argument('--num_layer', type=int, default=4, help='number of layers of gnn (default: 4)')
 parser.add_argument('--recurrunt_required', action='store_false', help='use recurrunt in the model (default: True)')
 parser.add_argument('--attention_required', action='store_true', help='use attention in the model (default: False)')
-parser.add_argument('--direction_vector_normalize_required', action='store_true', help='normalize the directionvector (default: False)')
+parser.add_argument('--direction_vector_normalize_required', action='store_true', help='normalize the direction vector (default: False)')
 parser.add_argument('--tanh_required', action='store_true', help='use tanh (default: False)')
 parser.add_argument('--sigma', type=float, default=1.5, help='sigma in kernel function')
 parser.add_argument('--weight', type=float, default=0.01, help='weight of MMD loss')
@@ -50,14 +50,14 @@ parser.add_argument('--seed', type=int, default=43, help='random seed (default: 
 parser.add_argument('--epochs', type=int, default=600, help='int type, number of epochs to train (default: 600)')
 parser.add_argument('--batch_size', type=int, default=256, help='int type, batch size for training (default: 256)')
 parser.add_argument('--learning_rate', type=float, default=5e-4, help='learning rate (lr) of optimizer (default: 5e-4)')
-parser.add_argument('--weight_decay', type=float, default=1e-12, help='weightdecay of optimizer (default: 1e-12)')
+parser.add_argument('--weight_decay', type=float, default=1e-12, help='weight decay of optimizer (default: 1e-12)')
 parser.add_argument('--times', type=int, default=1, help='experiment repeat times (default: 1)')
 parser.add_argument('--early_stop', type=int, default=100, help='early stop (default: 100)')
 parser.add_argument('--sample', type=int, default=3, help='how much to sample')
 
 
 # Log
-parser.add_argument('--log_directory', type=str, default='./logs/nbody', help='directory to generatethe json log file (default: ./logs)')
+parser.add_argument('--log_directory', type=str, default='./logs/nbody', help='directory to generate the json log file (default: ./logs/nbody)')
 parser.add_argument('--test_interval', type=int, default=5, help='how many epochs to wait before logging test (default: 5)')
 
 
